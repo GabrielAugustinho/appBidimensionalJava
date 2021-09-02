@@ -1,4 +1,3 @@
-
 package br.unitau.view;
 
 import br.unitau.matriz.TabelaModelo;
@@ -15,9 +14,8 @@ import javax.swing.table.TableColumn;
  */
 public class TelaMatriz extends javax.swing.JFrame {
 
- 
     private static final int CRIACAO = 0;
-    private static final int INICIALIZACAO =1;
+    private static final int INICIALIZACAO = 1;
     private static final int OPERACAO = 2;
     private MatrizDeInteiros matriz;
     private TabelaModelo tabelaModelo;
@@ -191,6 +189,11 @@ public class TelaMatriz extends javax.swing.JFrame {
         });
 
         jBSomaLinhas.setText("Soma linhas");
+        jBSomaLinhas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSomaLinhasActionPerformed(evt);
+            }
+        });
 
         jBSomaColunas.setText("Soma colunas");
 
@@ -314,17 +317,17 @@ public class TelaMatriz extends javax.swing.JFrame {
     }
 
     private void jBDefinirMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDefinirMatrizActionPerformed
-        if (jTFLinhaMatriz.getText().isEmpty() ||  (Integer.parseInt(jTFLinhaMatriz.getText()) <=0 || Integer.parseInt(jTFLinhaMatriz.getText()) >=10) ) {
-            JOptionPane.showMessageDialog(this,   "Informe um valor válido para linhas",   "Manipula Matriz", 0);
+        if (jTFLinhaMatriz.getText().isEmpty() || (Integer.parseInt(jTFLinhaMatriz.getText()) <= 0 || Integer.parseInt(jTFLinhaMatriz.getText()) >= 10)) {
+            JOptionPane.showMessageDialog(this, "Informe um valor válido para linhas", "Manipula Matriz", 0);
             jTFLinhaMatriz.setText("");
             jTFLinhaMatriz.requestFocusInWindow();
             return;
 
         }
         int lin = Integer.parseInt(jTFLinhaMatriz.getText());
-        
-        if (jTFColunaMatriz.getText().isEmpty() || (Integer.parseInt(jTFColunaMatriz.getText()) <=0 || Integer.parseInt(jTFColunaMatriz.getText()) >=10)) {
-            JOptionPane.showMessageDialog(this,   "Informe um valor válido para colunas", "Manipula Matriz", 0);
+
+        if (jTFColunaMatriz.getText().isEmpty() || (Integer.parseInt(jTFColunaMatriz.getText()) <= 0 || Integer.parseInt(jTFColunaMatriz.getText()) >= 10)) {
+            JOptionPane.showMessageDialog(this, "Informe um valor válido para colunas", "Manipula Matriz", 0);
             jTFColunaMatriz.setText("");
             jTFColunaMatriz.requestFocusInWindow();
             return;
@@ -332,7 +335,7 @@ public class TelaMatriz extends javax.swing.JFrame {
         }
 
         int col = Integer.parseInt(jTFColunaMatriz.getText());
-        
+
         matriz = new MatrizDeInteiros(lin, col);
         linha = matriz.getTotLin();
         coluna = matriz.getTotCol();
@@ -343,7 +346,7 @@ public class TelaMatriz extends javax.swing.JFrame {
     private void jBGerarMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGerarMatrizActionPerformed
         matriz.setMatriz();
         formataTabela();
-         setEstado(2);
+        setEstado(2);
     }//GEN-LAST:event_jBGerarMatrizActionPerformed
 
     private void formataTabela() {
@@ -351,9 +354,9 @@ public class TelaMatriz extends javax.swing.JFrame {
         jTTabelaDados.setModel(tabelaModelo);
         Cabecalho cabecalhoMatriz = new Cabecalho();
         TableColumn tc = jTTabelaDados.getColumn("");
-         tc.setCellRenderer(cabecalhoMatriz);
-         jTTabelaDados.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-     
+        tc.setCellRenderer(cabecalhoMatriz);
+        jTTabelaDados.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+
     }
 
     private void jBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimparActionPerformed
@@ -373,7 +376,7 @@ public class TelaMatriz extends javax.swing.JFrame {
 
     private void validaCampo(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validaCampo
         char tecla = evt.getKeyChar();
-        if (!Character.isDigit(tecla)){
+        if (!Character.isDigit(tecla)) {
             evt.consume();
         }
     }//GEN-LAST:event_validaCampo
@@ -385,13 +388,17 @@ public class TelaMatriz extends javax.swing.JFrame {
     }//GEN-LAST:event_focusGained
 
     private void focusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLost
-         javax.swing.JTextField campo = (javax.swing.JTextField) evt.getSource();
+        javax.swing.JTextField campo = (javax.swing.JTextField) evt.getSource();
         campo.setBackground(Color.white);
     }//GEN-LAST:event_focusLost
 
     private void jBDiagonaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDiagonaPrincipalActionPerformed
         jTAResultado.setText(matriz.dados(matriz.diagonalPrincipal(), "Diagonal Principal:"));
     }//GEN-LAST:event_jBDiagonaPrincipalActionPerformed
+
+    private void jBSomaLinhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSomaLinhasActionPerformed
+        jTAResultado.setText(matriz.dados(matriz.somaCadaLinha(), "Soma de cada linha:"));
+    }//GEN-LAST:event_jBSomaLinhasActionPerformed
 
     public void setEstado(int estado) {
         this.estado = estado;
@@ -458,8 +465,8 @@ public class TelaMatriz extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaMatriz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-       // </editor-fold>
-       // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
 
         /*
          * Create and display the form

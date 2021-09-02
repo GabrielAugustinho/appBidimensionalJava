@@ -22,7 +22,7 @@ public class MatrizDeInteiros {
     public void setMatriz() {
         Random valor = new Random();
         for (int vet[] : matriz) {
-            for (int col : vet) {
+            for (int col = 0; col < vet.length; col++) {
                 vet[col] = valor.nextInt(10);
             }
         }
@@ -44,14 +44,14 @@ public class MatrizDeInteiros {
         return matriz[0].length;
     }
 
-    public String dados(int vet[], String msg){
-        String dados = msg+"\n";
-        for(int valor:vet){
-            dados+=valor+"\t";
+    public String dados(int vet[], String msg) {
+        String dados = msg + "\n";
+        for (int valor : vet) {
+            dados += valor + "\t";
         }
         return dados;
     }
-    
+
     public String dados() {
         String dadosMatriz = "Valores armazenados na matriz\n";
 
@@ -69,8 +69,18 @@ public class MatrizDeInteiros {
     public int[] diagonalPrincipal() {
         int[] diagonal = new int[matriz.length];
         for (int i = 0; i < matriz.length; i++) {
-            diagonal[i]=matriz[i][i];
+            diagonal[i] = matriz[i][i];
         }
         return diagonal;
-    }   
+    }
+
+    public int[] somaCadaLinha() {
+        int[] soma = new int[matriz.length];
+        for (int linha = 0; linha<matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[linha].length; coluna++) {
+                soma[linha] += matriz[linha][coluna];
+            }
+        }
+        return soma;
+    }
 }
