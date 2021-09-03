@@ -271,16 +271,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Soma colunas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSomaColunasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBTransposta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Transposta"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBTranspostaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBDiagSecundaria">
           <Properties>
             <Property name="text" type="java.lang.String" value="Diag Secundaria"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDiagSecundariaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBBuscaValor">
           <Properties>

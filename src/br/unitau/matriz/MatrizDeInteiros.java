@@ -51,6 +51,17 @@ public class MatrizDeInteiros {
         }
         return dados;
     }
+    
+    public String dados(int mat[][], String msg) {
+        String dados = msg + "\n";
+        for (int vet[] : mat) {
+            for (int j = 0; j < vet.length; j++) {
+                dados += vet[j] + "\t";
+            }
+            dados += "\n";
+        }
+        return dados;
+    }
 
     public String dados() {
         String dadosMatriz = "Valores armazenados na matriz\n";
@@ -73,6 +84,15 @@ public class MatrizDeInteiros {
         }
         return diagonal;
     }
+    
+    public int[] diagonalSecundaria() {
+        int[] diagonal = new int[matriz.length];
+        int aux = matriz[0].length - 1;
+        for (int i = 0; i < matriz.length; i++) {
+            diagonal[i] = matriz[i][aux--];
+        }
+        return diagonal;
+    }
 
     public int[] somaCadaLinha() {
         int[] soma = new int[matriz.length];
@@ -82,5 +102,26 @@ public class MatrizDeInteiros {
             }
         }
         return soma;
+    }
+    
+    public int[] somaCadaColuna() {
+        int[] soma = new int[matriz[0].length];
+        
+        for(int coluna = 0; coluna < matriz[0].length; coluna++){
+            for(int linha = 0; linha < matriz.length; linha++){
+                soma[coluna]+=matriz[linha][coluna];
+            }
+        }
+        return soma;
+    }
+    
+    public int[][] transposta(){
+        int[][] transposta =new int[matriz[0].length][matriz.length];
+        for (int linha = 0; linha<matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[linha].length; coluna++) {
+                transposta[coluna][linha] = matriz[linha][coluna];
+            }
+        }
+        return transposta;
     }
 }

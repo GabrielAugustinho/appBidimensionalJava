@@ -196,10 +196,25 @@ public class TelaMatriz extends javax.swing.JFrame {
         });
 
         jBSomaColunas.setText("Soma colunas");
+        jBSomaColunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSomaColunasActionPerformed(evt);
+            }
+        });
 
         jBTransposta.setText("Transposta");
+        jBTransposta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBTranspostaActionPerformed(evt);
+            }
+        });
 
         jBDiagSecundaria.setText("Diag Secundaria");
+        jBDiagSecundaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDiagSecundariaActionPerformed(evt);
+            }
+        });
 
         jBBuscaValor.setText("Busca Valor");
 
@@ -399,6 +414,18 @@ public class TelaMatriz extends javax.swing.JFrame {
     private void jBSomaLinhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSomaLinhasActionPerformed
         jTAResultado.setText(matriz.dados(matriz.somaCadaLinha(), "Soma de cada linha:"));
     }//GEN-LAST:event_jBSomaLinhasActionPerformed
+
+    private void jBSomaColunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSomaColunasActionPerformed
+        jTAResultado.setText(matriz.dados(matriz.somaCadaColuna(), "Soma de cada coluna:"));
+    }//GEN-LAST:event_jBSomaColunasActionPerformed
+
+    private void jBDiagSecundariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDiagSecundariaActionPerformed
+        jTAResultado.setText(matriz.dados(matriz.diagonalSecundaria(), "Diagonal Secundária:"));
+    }//GEN-LAST:event_jBDiagSecundariaActionPerformed
+
+    private void jBTranspostaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTranspostaActionPerformed
+        jTAResultado.setText(matriz.dados(matriz.transposta(), "Diagonal Secundária:"));
+    }//GEN-LAST:event_jBTranspostaActionPerformed
 
     public void setEstado(int estado) {
         this.estado = estado;
